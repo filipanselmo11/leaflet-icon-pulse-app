@@ -7,10 +7,15 @@
 </template>
 
 <script>
-import L from "leaflet";
+import "leaflet";
 import "leaflet/dist/leaflet.css";
 import "@ansur/leaflet-pulse-icon/dist/L.Icon.Pulse";
 import "@ansur/leaflet-pulse-icon/dist/L.Icon.Pulse.css";
+// import "../../node_modules/@ansur/leaflet-pulse-icon/dist/L.Icon.Pulse";
+// import "@ansur/leaflet-pulse-icon/dist/L.Icon.Pulse";
+// import "@ansur/leaflet-pulse-icon/dist/L.Icon.Pulse.css";
+
+const L = window["L"];
 
 export default {
   name: "MapComponent",
@@ -39,6 +44,8 @@ export default {
         }
       );
       this.map.addLayer(this.layer);
+      this.pulseIcon = L.icon.pulse({ iconSize: [20, 20], color: "red" });
+      this.marker = L.marker([50, 15], { icon: this.pulseIcon }).addTo(this.map);
     },
   },
 };
